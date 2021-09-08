@@ -1,51 +1,25 @@
-<html>
-<head><title>Transfer</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="images2/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts2/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="css2/util.css">
+	<link rel="stylesheet" type="text/css" href="css2/main.css">
 
-<style>
-body{
-	background-image: url("other_bg.jfif");
-    background-repeat: no-repeat;
-    background-size:100%;
-}
-table,th,td{
-                    color:black;
-                    font-size: 20px;
-                }
-				table{width : 90%;}
-h1{
-                    color: darkblue;
-					font-size:30px;
-                    padding-left: 100px;
-					text-align:center;
-					padding-top:30px;
-                }
-                .button {
-  background-color:lightsalmon; /* Green */
-  border: none;
-  color: black;
-  padding: 9px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius:30%;
-  font-weight:bold;
-				}
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
 </head>
 <body>
-
-
-<div class="alert alert-success alert-dismissible" role="alert" id="liveAlert">
-  <strong>Nice!</strong> The Transfer was Successfull!!!
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    
 <?php
 $errors=array();
-$con=mysqli_connect("localhost","root","","test");
+$con=mysqli_connect("localhost","id17555771_root","B<6qbtOl|r/@yFAO","id17555771_test");
 if($con->connect_error)
 die("Connection failed :".$con->connect_error);
 
@@ -63,40 +37,42 @@ if(count($errors)==0){
 	$sqlr=mysqli_query($con,"select * from accounts where C_no='$reciever'");
 
 	if((mysqli_num_rows($sql)>0) and (mysqli_num_rows($sqlr)>0)){
-echo "<center><table border='1' class='table'>
-<tr>
-<th>Account Number</th>
-<th>Name</th>
-<th>Email</th>
-<th>Current Balance</th>
-<th>Remark</th>
-</tr>";
+echo "<table><thead>
+<tr class='table100-head'>
+                            
+<th class='column1'>Account Number</th>
+<th class='column2'>Name</th>
+<th class='column3'>Email</th>
+  <th class='column4'>Current Balance</th>
+ <th class='column5'>Remark</th>
+                            
+</tr>
+</thead>
+<tbody>
+";
 
 while(($r = mysqli_fetch_array($sql)) and ($r1 = mysqli_fetch_array($sqlr)))
 {
 echo "<tr>";
-echo "<td>" . $r['C_no'] . "</td>";
-echo "<td>" . $r['C_name'] . "</td>";
-echo "<td>" . $r['C_mail'] . "</td>";
-echo "<td>" . $r['C_ballance'] . "</td>";
-echo "<td>" . $remark . "</td>";
+echo "<td class='column1'>" . $r['C_no'] . "</td>";
+echo "<td class='column2'>" . $r['C_name'] . "</td>";
+echo "<td class='column3'>" . $r['C_mail'] . "</td>";
+echo "<td class='column4'>" . $r['C_ballance'] . "</td>";
+echo "<td class='column5'>" . $remark . "</td>";
 echo "</tr>";
 
 echo "<tr>";
-echo "<td>" . $r1['C_no'] . "</td>";
-echo "<td>" . $r1['C_name'] . "</td>";
-echo "<td>" . $r1['C_mail'] . "</td>";
-echo "<td>" . $r1['C_ballance'] . "</td>";
-echo "<td>" . $remark . "</td>";
+echo "<td class='column1'>" . $r1['C_no'] . "</td>";
+echo "<td class='column2'>" . $r1['C_name'] . "</td>";
+echo "<td class='column3'>" . $r1['C_mail'] . "</td>";
+echo "<td class='column4'>" . $r1['C_ballance'] . "</td>";
+echo "<td class='column5'>" . $remark . "</td>";
 echo "</tr>";
 echo "</tr>";
 
 }
-echo "</table></center></br></br></br>";
+echo "</tbody></table></br></br></br>";
 }
-
-
-
 echo "<center><h2><u>After Transfer</u></h2></center>";
 
 $send_cur=mysqli_query($con,"select C_ballance from accounts where C_no='$sender'");
@@ -121,36 +97,39 @@ $row_rec=mysqli_fetch_array($rec_cur);
 	$sql=mysqli_query($con,"select * from accounts where C_no='$sender'");
 	$sqlr=mysqli_query($con,"select * from accounts where C_no='$reciever'");
 	if((mysqli_num_rows($sql)>0) and (mysqli_num_rows($sqlr)>0)){
-echo "<center><table border='1' class='table'>
-<tr>
-<th>Account Number</th>
-<th>Name</th>
-<th>Email</th>
-<th>Current Balance</th>
-<th>Remark</th>
-</tr>";
-
+echo "<table><thead>
+<tr class='table100-head'>
+                            
+<th class='column1'>Account Number</th>
+<th class='column2'>Name</th>
+<th class='column3'>Email</th>
+  <th class='column4'>Current Balance</th>
+ <th class='column5'>Remark</th>
+                            
+</tr>
+</thead>
+<tbody>";
 while($r = mysqli_fetch_array($sql)  and ($r1 = mysqli_fetch_array($sqlr)))
 {
 echo "<tr>";
-echo "<td>" . $r['C_no'] . "</td>";
-echo "<td>" . $r['C_name'] . "</td>";
-echo "<td>" . $r['C_mail'] . "</td>";
-echo "<td>" . $r['C_ballance'] . "</td>";
-echo "<td>" . $remark . "</td>";
+echo "<td class='column1'>" . $r['C_no'] . "</td>";
+echo "<td class='column2'>" . $r['C_name'] . "</td>";
+echo "<td class='column3'>" . $r['C_mail'] . "</td>";
+echo "<td class='column4'>" . $r['C_ballance'] . "</td>";
+echo "<td class='column5'>" . $remark . "</td>";
 echo "</tr>";
 echo "</tr>";
 
 echo "<tr>";
-echo "<td>" . $r1['C_no'] . "</td>";
-echo "<td>" . $r1['C_name'] . "</td>";
-echo "<td>" . $r1['C_mail'] . "</td>";
-echo "<td>" . $r1['C_ballance'] . "</td>";
-echo "<td>" . $remark . "</td>";
+echo "<td class='column1'>" . $r1['C_no'] . "</td>";
+echo "<td class='column2'>" . $r1['C_name'] . "</td>";
+echo "<td class='column3'>" . $r1['C_mail'] . "</td>";
+echo "<td class='column4'>" . $r1['C_ballance'] . "</td>";
+echo "<td class='column5''>" . $remark . "</td>";
 echo "</tr>";
 echo "</tr>";
 }
-echo "</table></center></br></br></br>";
+echo "</tbody></table></br></br></br>";
 }
 
 
@@ -171,8 +150,49 @@ else{
   	<?php endforeach ?>
   </div>
 <?php  endif ?>
-<form action="home.php" method="post">
+<form action="index.php" method="post">
 <center><input class="button" type="submit" value="Home"/></center>
 </form>
+<style>
+@media screen and (max-width: 992px){
+    table tbody tr td:nth-child(1):before {
+    content: "Acc. No";
+  }
+  table tbody tr td:nth-child(2):before {
+    content: "Name";
+  }
+  table tbody tr td:nth-child(3):before {
+    content: "Email";
+  }
+  table tbody tr td:nth-child(4):before {
+    content: "Current Ball.";
+  }
+  table tbody tr td:nth-child(5):before {
+    content: "Remark";
+  }}
+    body{
+        background: linear-gradient(45deg, #4158d0, #c850c0);
+    }
+    h1,h2{
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .button{
+      margin-top: 20px;
+      font-size: 16px;
+    line-height: 28px;
+    padding: 8px 16px;
+    width: 20%;
+    min-height: 44px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    }
+</style>
 </body>
 </html>
+
+
+
+
+

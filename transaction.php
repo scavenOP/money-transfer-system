@@ -25,13 +25,13 @@
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-            <h1><b>Transaction Details</b></h1>
+            <center><h1><b>Transaction Details</b></h1></center>
 				<div class="table100">
 					
                         <?php
-                        session_start();
+                        
                         $errors=array();
-                        $con=mysqli_connect("localhost","root","","test");
+                        $con=mysqli_connect("localhost","id17555771_root","B<6qbtOl|r/@yFAO","id17555771_test");
                         if($con->connect_error)
                         die("Connection failed :".$con->connect_error);
 
@@ -45,8 +45,8 @@
 								
 								<th class='column1'>Date-Time</th>
                                 <th class='column2'>Transfer Amount</th>
-                                <th class='column3'>Sender Account No.</th>
-                                <th class='column4'>Receiver Account No.</th>
+                                <th class='column3'>Sender Acc. No.</th>
+                                <th class='column4'>Receiver Acc. No.</th>
                                 <th class='column5'>Remark</th>
                                 
 							</tr>
@@ -54,11 +54,11 @@
                         while($row = mysqli_fetch_array($result))
                             {
                             echo "<tr>";
-                            echo "<td class='column1'>" . $row['date_time'] . "</td>";
-                            echo "<td class='column2'>" . $row['transfer_amount'] . "</td>";
-                            echo "<td class='column3'>" . $row['sender_account_number'] . "</td>";
-                            echo "<td class='column4'>" . $row['reciever_account_number'] . "</td>";
-                            echo "<td class='column5'>" . $row['remark'] . "</td>";
+                            echo "<td class='column1'>   " . $row['date_time'] . "</td>";
+                            echo "<td class='column2'>   " . $row['transfer_amount'] . " INR</td>";
+                            echo "<td class='column3'>   " . $row['sender_account_number'] . "</td>";
+                            echo "<td class='column4'>   " . $row['reciever_account_number'] . "</td>";
+                            echo "<td class='column5'>   " . $row['remark'] . "</td>";
                             echo "</tr>";
                             }
                             echo "</table>";
@@ -85,7 +85,7 @@
 								
 						</tbody>
 					</table>
-                    <form action="home.php" method="post"/>
+                    <form action="index.php" method="post"/>
 <center><input class="button" type="submit" value="Home" /></center>
 </form>
 				</div>
@@ -94,6 +94,7 @@
 	</div>
 
     <style>
+        @media screen and (min-width: 992px){
         .column1 {
   width: 222px;
   padding-left: 40px;
@@ -125,6 +126,45 @@
   
   text-align: center;
 }
+h1{
+                    color: white;
+					font-size:30px;
+                    padding-left: 26px;
+                    padding-bottom: 26px;
+					text-align:center;
+					padding-top:30px;
+                    background-color: rgba(0,0,0,0)
+                }
+                .button {
+  background-color:lightsalmon; /* Green */
+  border: none;
+  color: black;
+  padding: 9px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px 10px;
+  cursor: pointer;
+  border-radius:30%;
+  font-weight:bold;
+}}
+@media screen and (max-width: 992px){
+    table tbody tr td:nth-child(1):before {
+    content: "Date-Time";
+  }
+  table tbody tr td:nth-child(2):before {
+    content: "Transfer Amount";
+  }
+  table tbody tr td:nth-child(3):before {
+    content: "Sender Acc. No";
+  }
+  table tbody tr td:nth-child(4):before {
+    content: "Receiver Acc. No.";
+  }
+  table tbody tr td:nth-child(5):before {
+    content: "Remark";
+  }
 h1{
                     color: white;
 					font-size:30px;
